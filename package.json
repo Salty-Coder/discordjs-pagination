@@ -1,7 +1,7 @@
 {
-  "name": "@devraelfreeze/discordjs-pagination",
-  "version": "2.7.6",
-  "description": "A pagination module for Discord.js v14",
+  "name": "@salty-coder/discordjs-pagination",
+  "version": "2.7.7",
+  "description": "An updated pagination module for Discord.js v14",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -18,11 +18,11 @@
     "modulable",
     "discord.js v14"
   ],
-  "author": "devRael",
+  "author": "devRael & Salty-Coder",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/devRael1/discordjs-pagination"
+    "url": "https://github.com/Salty-Coder/discordjs-pagination"
   },
   "devDependencies": {
     "create-ts-index": "^1.14.0",

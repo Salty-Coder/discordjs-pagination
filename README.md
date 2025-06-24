@@ -1,29 +1,27 @@
-<p align="center"><a href="https://nodei.co/npm/@devraelfreeze/discordjs-pagination/"><img src="https://nodei.co/npm/@devraelfreeze/discordjs-pagination.png" alt=""></a></p>
+<p align="center"><a href="https://nodei.co/npm/@salty-coder/discordjs-pagination/"><img src="https://nodei.co/npm/@salty-coder/discordjs-pagination.png" alt=""></a></p>
 
 <div align="center">
-<a href="https://github.com/devRael1/discordjs-pagination/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/devRael1/discordjs-pagination"></a>
-<a href="https://github.com/devRael1/discordjs-pagination/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/devRael1/discordjs-pagination"></a>
-<a href="https://github.com/devRael1/discordjs-pagination/blob/master/MIT-LICENCE"><img alt="GitHub license" src="https://img.shields.io/github/license/devRael1/discordjs-pagination?color=red"></a>
-<img alt="npm" src="https://img.shields.io/npm/dw/@devraelfreeze/discordjs-pagination?color=purple">
+<a href="https://github.com/Salty-Coder/discordjs-pagination/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/Salty-Coder/discordjs-pagination"></a>
+<a href="https://github.com/Salty-Coder/discordjs-pagination/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/Salty-Coder/discordjs-pagination"></a>
+<a href="https://github.com/Salty-Coder/discordjs-pagination/blob/master/MIT-LICENCE"><img alt="GitHub license" src="https://img.shields.io/github/license/Salty-Coder/discordjs-pagination?color=red"></a>
+<img alt="npm" src="https://img.shields.io/npm/dw/@salty-coder/discordjs-pagination?color=purple">
 <br>
-<img alt="npm (tag)" src="https://img.shields.io/npm/v/@devraelfreeze/discordjs-pagination/latest?color=yellow&label=%40devraelfreeze%2Fdiscordjs-pagination">
+<img alt="npm (tag)" src="https://img.shields.io/npm/v/@salty-coder/discordjs-pagination/latest?color=yellow&label=%40salty-coder%2Fdiscordjs-pagination">
 </div>
 
 # `❓discordjs-pagination`
 
 An advanced module with quick setup and different options to implement pagination system for Discord.js.
-<br>**_This package only support discord.js v14._**
+<br>**_This package is updated to no longer include depreciated attributes._**
 
-### <br>I will not do any more updates for version 1.8.x.
-
-This package is no longer compatible with discord.js v13
+### I wish to take on this project and keep it updated, to be optimised for the latest Discord.js versions.
 
 ## `📥 Installation`
 
 To install this module type the following command in your console:
 
 ```
-npm install @devraelfreeze/discordjs-pagination
+npm install @salty-coder/discordjs-pagination
 ```
 
 ## `⚙️ Pagination Module Options`
@@ -123,15 +121,13 @@ await pagination({
 ## `🐛 Bug Reports`
 
 If you have any bugs or trouble setting the module up, feel free to open an issue
-on [GitHub Repository](https://github.com/devRael1/discordjs-pagination)
+on [GitHub Repository](https://github.com/Salty-Coder/discordjs-pagination)
 <br>
 
-### If you want more support, you can contact me.
-Discord: `1043813027205619804`
 ## `🗃️ Old Versions`
 If you want to use old version, you can use command
 ```
-npm install @devraelfreeze/discordjs-pagination@<version>
+npm install @salty-coder/discordjs-pagination@<version>
 ```
 ## `🧾 TODO`
 
