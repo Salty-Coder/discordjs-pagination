@@ -9,7 +9,8 @@ import {
    TextInputBuilder,
    TextInputStyle,
    ModalActionRowComponentBuilder,
-   ModalSubmitInteraction
+   ModalSubmitInteraction,
+   MessageFlags
 } from "discord.js";
 import {ButtonTypes, ButtonStyles, ButtonsTypes, PaginationOptions} from "./pagination.i";
 
@@ -18,7 +19,9 @@ const defaultEmojis = {
    previous: "◀️",
    next: "▶️",
    last: "➡️",
-   number: "#️⃣"
+   number: "#️⃣",
+   check: "✅",
+   cross: "❌",
 }
 
 const defaultStyles = {
@@ -111,7 +114,7 @@ export const pagination = async (options: PaginationOptions) => {
    let channel: BaseGuildTextChannel = message?.channel as BaseGuildTextChannel || interaction?.channel as BaseGuildTextChannel;
    
    if (type === 'interaction' && channel) {
-      await interaction.deferReply({ephemeral: ephemeralMessage}).catch(() => ({}));
+      await interaction.deferReply({ ...(ephemeralMessage ? { flags: [MessageFlags.Ephemeral] } : {}) }).catch(() => ({}));
       initialMessage = await interaction.editReply({
          embeds: [changeFooter()],
          components: components()
@@ -163,10 +166,12 @@ export const pagination = async (options: PaginationOptions) => {
          }).then(async (i) => {
             const page_number = i.fields.getTextInputValue('page_number');
             const int = parseInt(page_number);
-            if (isNaN(int)) return i.followUp({
-               content: `${i.member.user}, Please enter a valid page number!\n\`${page_number}\` is not a valid page number!`,
-               ephemeral: true
-            });
+            if (isNaN(int)){
+               return i.followUp({
+                  content: `${i.member.user}, Please enter a valid page number!\n\`${page_number}\` is not a valid page number!`,
+                  ...(ephemeralMessage ? { flags: [MessageFlags.Ephemeral] } : {})
+               });
+            };
             if (int > embeds.length) {
                currentPage = embeds.length;
             } else {
@@ -179,7 +184,7 @@ export const pagination = async (options: PaginationOptions) => {
             await i.update({
                embeds: [changeFooter()],
                components: components(),
-               ephemeral: ephemeralMessage
+               ...(ephemeralMessage ? { flags: [MessageFlags.Ephemeral] } : {})
             });
          });
       });
@@ -209,39 +214,28 @@ export const pagination = async (options: PaginationOptions) => {
       });
    });
    
-   collector.on("end", () => {
-      if (type === 'message') {
+   collector.on("end", async () => {
+      try {
          if (deleteAtEnd) {
-            initialMessage.delete()
-                  .catch(() => ({}));
-         }
-         else {
-            initialMessage.edit({
-                  components: disableB ? components(true) : []
-            }).catch(() => ({}));
-         }
-      }
-      else {
-         if (deleteAtEnd) {
-            interaction.deleteReply()
-                  .catch(err => {
-                     if (err.code === 50027) {
-                        console.log(`Webhook token has expired : ${client ? "trying to delete embed from it's id..." : "no client found in option, cannot delete embed"}`);
-                        if (client) {
-                           client.channels.fetch(interaction.channelId).then(channel => {
-                              channel.messages.delete(initialMessage.id);
-                           }).then(() => {
-                              console.log(`Message with ${initialMessage.id} id has been deleted successfully.`);
-                           }).catch(err => console.log(`Channel does not exist or other error has been raised :\n${err}`))
-                        }
-                     }
+               if (type === 'message') {
+                  await initialMessage.delete();
+               } else {
+                  await interaction.deleteReply();
+               }
+         } else {
+               // If deleteAtEnd is false, just remove the buttons
+               if (type === 'message') {
+                  await initialMessage.edit({
+                     components: disableB ? components(true) : []
                   });
+               } else {
+                  await interaction.editReply({
+                     components: disableB ? components(true) : []
+                  });
+               }
          }
-         else {
-            interaction.editReply({
-                  components: disableB ? components(true) : []
-            }).catch(() => ({}));
-         }
+      } catch (error) {
+         console.error('Error deleting or editing message:', error);
       }
    });
 }
