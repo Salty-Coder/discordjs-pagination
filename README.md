@@ -14,7 +14,8 @@
 An advanced module with quick setup and different options to implement pagination system for Discord.js.
 <br>**_This package is updated to no longer include depreciated attributes._**
 
-### I wish to take on this project and keep it updated, to be optimised for the latest Discord.js versions.
+### This is a fork of the project [devRael1/discordjs-pagination](https://github.com/) which was archived in 2024.<br/>I wish to take on this project and keep it updated, to be optimised for the latest Discord.js versions.
+<br/>
 
 ## `📥 Installation`
 
@@ -49,7 +50,7 @@ npm install @salty-coder/discordjs-pagination
 
 ```js
 /** Decalre the module */
-const {pagination, ButtonTypes, ButtonStyles} = require('@devraelfreeze/discordjs-pagination');
+const {pagination, ButtonTypes, ButtonStyles} = require('@salty-coder/discordjs-pagination');
 /** Use pagination system */
 await pagination({
   /** Pagination options here */
