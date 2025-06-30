@@ -1,6 +1,6 @@
 {
   "name": "@salty-coder/discordjs-pagination",
-  "version": "2.7.9",
+  "version": "2.7.10",
   "description": "An updated pagination module for Discord.js v14",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -8,7 +8,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "pagination",
     "discord.js",
