@@ -235,7 +235,11 @@ export const pagination = async (options: PaginationOptions) => {
                }
          }
       } catch (error) {
-         console.error('Error deleting or editing message:', error);
+         if (error.code === 10008) {
+            console.warn('Failed to delete/edit message: Message was already deleted or not found.');
+         } else {
+            console.error('Error deleting/editing message:', error);
+         }  
       }
    });
 }
