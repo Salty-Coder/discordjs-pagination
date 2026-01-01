@@ -113,14 +113,19 @@ export const pagination = async (options: PaginationOptions) => {
    let initialMessage;
    let channel: BaseGuildTextChannel = message?.channel as BaseGuildTextChannel || interaction?.channel as BaseGuildTextChannel;
    
-   if (type === 'interaction' && channel) {
+   if (type === 'interaction') {
       await interaction.deferReply({ ...(ephemeralMessage ? { flags: [MessageFlags.Ephemeral] } : {}) }).catch(() => ({}));
       initialMessage = await interaction.editReply({
          embeds: [changeFooter()],
          components: components()
       });
-   } else {
+   } else if (channel) {
       initialMessage = await channel.send({
+         embeds: [changeFooter()],
+         components: components()
+      });
+   } else {
+      initialMessage = await message.reply({
          embeds: [changeFooter()],
          components: components()
       });
